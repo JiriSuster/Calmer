@@ -10,7 +10,10 @@ import SwiftUI
 
 struct MainPageContentView: View {
     var body: some View {
-        Text("Hello3")
+        Form{
+            Text("Hello3")
+        }
+        
     }
 }
 
