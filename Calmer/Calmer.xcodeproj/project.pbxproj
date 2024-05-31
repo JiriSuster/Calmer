@@ -16,6 +16,7 @@
 		880B33352C089EFA00DE69CB /* TabsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 880B33342C089EFA00DE69CB /* TabsController.swift */; };
 		880B33372C08A1F000DE69CB /* NotesContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 880B33362C08A1F000DE69CB /* NotesContentView.swift */; };
 		880B33392C08A20300DE69CB /* MusicContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 880B33382C08A20300DE69CB /* MusicContentView.swift */; };
+		880B333B2C0917F300DE69CB /* PhoneElementContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 880B333A2C0917F300DE69CB /* PhoneElementContentView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -29,6 +30,7 @@
 		880B33342C089EFA00DE69CB /* TabsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabsController.swift; sourceTree = "<group>"; };
 		880B33362C08A1F000DE69CB /* NotesContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotesContentView.swift; sourceTree = "<group>"; };
 		880B33382C08A20300DE69CB /* MusicContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicContentView.swift; sourceTree = "<group>"; };
+		880B333A2C0917F300DE69CB /* PhoneElementContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhoneElementContentView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -88,6 +90,7 @@
 				880B33322C089DA800DE69CB /* AnimationContentView.swift */,
 				880B33362C08A1F000DE69CB /* NotesContentView.swift */,
 				880B33382C08A20300DE69CB /* MusicContentView.swift */,
+				880B333A2C0917F300DE69CB /* PhoneElementContentView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -178,6 +181,7 @@
 			files = (
 				880B33352C089EFA00DE69CB /* TabsController.swift in Sources */,
 				880B33312C089D8500DE69CB /* ContactsContentView.swift in Sources */,
+				880B333B2C0917F300DE69CB /* PhoneElementContentView.swift in Sources */,
 				880B331E2C089AD700DE69CB /* CalmerApp.swift in Sources */,
 				880B332F2C089B7600DE69CB /* MainPageContentView.swift in Sources */,
 				880B33372C08A1F000DE69CB /* NotesContentView.swift in Sources */,

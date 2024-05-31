@@ -11,7 +11,6 @@ struct AnimationContentView: View {
     @State private var isAnimation: Bool = false
     @State private var timer = Timer.publish(every: 4, on: .main, in: .common).autoconnect()
     @State private var showFirstText = true
-    @State private var cyclesCounter = 10
     
     var body: some View {
         VStack {
