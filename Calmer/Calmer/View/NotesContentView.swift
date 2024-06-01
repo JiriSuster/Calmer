@@ -9,9 +9,24 @@ import SwiftUI
 
 struct NotesContentView: View {
     var body: some View {
-        Form{
-            Text("Hello3")
-        }
+        
+        NavigationView {
+                    VStack{
+                        Text("Hello3")
+                    }
+                    .toolbar{
+                        ToolbarItem(placement: .navigationBarLeading) {
+                                            Text("Notes")
+                                .font(.largeTitle)
+                                        }
+                        ToolbarItem(placement: .navigationBarTrailing){
+                            Button(action: {}){
+                                Text("Add note")
+                            }
+                        }
+                    }
+                }
+        
         
     }
 }
