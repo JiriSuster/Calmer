@@ -10,9 +10,13 @@ import SwiftUI
 
 struct MainPageContentView: View {
     var body: some View {
-        Form{
-            Text("Hello3")
-        }
+        
+        NavigationView {
+                    Form{
+                        Text("Hello3")
+                    }
+                    .navigationBarTitle("Calmer")
+                }
         
     }
 }
