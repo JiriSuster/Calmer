@@ -8,23 +8,24 @@
 import SwiftUI
 
 struct SoundElementContentView: View {
-    let soundParameters: SoundItem
+    let currentIndex: Int
+    let soundItems: [SoundItem]
     @State var isViewPresented = false
     
     
     var body: some View {
         HStack {
                     
-            Image(uiImage: soundParameters.image)
+            Image(uiImage: soundItems[currentIndex].image)
                         .resizable()
                         .aspectRatio(contentMode: .fill)
                         .frame(width: 50, height: 80)
             
                     VStack(alignment: .leading) {
-                        Text("\(soundParameters.name)")
+                        Text("\(soundItems[currentIndex].name)")
                             .font(.headline)
                             .padding(.bottom, 2)
-                        Text("\(soundParameters.category)")
+                        Text("\(soundItems[currentIndex].category)")
                             .font(.caption)
                             .padding(.horizontal,12)
                             .padding(.vertical,8)
@@ -48,7 +49,7 @@ struct SoundElementContentView: View {
                             .frame(width: 40, height: 40)
                             .foregroundColor(.yellow)
                     }.sheet(isPresented: $isViewPresented){
-                        MusicPlayerContentView(soundParameters: soundParameters, isViewPresented: $isViewPresented, soundPlayerViewModel: SoundPlayerViewModel(soundParameters: soundParameters))
+                        MusicPlayerContentView(isViewPresented: $isViewPresented, soundPlayerViewModel: SoundPlayerViewModel(currentIndex: self.currentIndex, soundItems: self.soundItems))
                             .presentationDetents([.fraction(0.75) , .large])
                     }
                     .padding()

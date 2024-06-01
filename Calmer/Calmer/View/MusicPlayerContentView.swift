@@ -9,9 +9,7 @@ import SwiftUI
 import AVFoundation
 
 struct MusicPlayerContentView: View {
-    let soundParameters: SoundItem
     @Binding var isViewPresented: Bool
-   
     @StateObject var soundPlayerViewModel: SoundPlayerViewModel
     
     var body: some View {
@@ -19,7 +17,7 @@ struct MusicPlayerContentView: View {
             VStack{
                 
                 VStack{
-                    Image(uiImage: soundParameters.image)
+                    Image(uiImage: soundPlayerViewModel.getCurrentItem().image)
                         .resizable()
                         .scaledToFill()
                         .frame(maxWidth: .infinity, maxHeight: .infinity)
@@ -45,20 +43,43 @@ struct MusicPlayerContentView: View {
                     Text(soundPlayerViewModel.getFormatedDuration()).foregroundStyle(.gray)
                 }.padding(.horizontal,20)
                 
-                Button(action: {
-                    if soundPlayerViewModel.isMusicPlaying() {
-                        soundPlayerViewModel.pauseSound()
-                    }else{
-                        soundPlayerViewModel.playSound()
-                    }
-                }) {
-                    Image(systemName: soundPlayerViewModel.isMusicPlaying() ? "pause.circle.fill" : "play.circle.fill")
-                        .resizable()
-                        .frame(width: 60, height: 60)
-                        .foregroundColor(.black)
-                }.padding()
-
-            }.navigationTitle(soundParameters.name)
+                HStack{
+                    
+                    Button(action: {
+                        soundPlayerViewModel.setPrevSound()
+                    }) {
+                        Image(systemName: "backward.circle.fill")
+                            .resizable()
+                            .frame(width: 40, height: 40)
+                            .foregroundColor(.black)
+                    }.padding()
+                    
+                    Button(action: {
+                        if soundPlayerViewModel.isMusicPlaying() {
+                            soundPlayerViewModel.pauseSound()
+                        }else{
+                            soundPlayerViewModel.playSound()
+                        }
+                    }) {
+                        Image(systemName: soundPlayerViewModel.isMusicPlaying() ? "pause.circle.fill" : "play.circle.fill")
+                            .resizable()
+                            .frame(width: 60, height: 60)
+                            .foregroundColor(.black)
+                    }.padding()
+                    
+                    
+                    Button(action: {
+                        soundPlayerViewModel.setNextSound()
+                    }) {
+                        Image(systemName: "forward.circle.fill")
+                            .resizable()
+                            .frame(width: 40, height: 40)
+                            .foregroundColor(.black)
+                    }.padding()
+                    
+                }
+                
+            }.navigationTitle(soundPlayerViewModel.getCurrentItem().name)
                 .toolbar{
                     ToolbarItem(placement: .topBarLeading){
                         Button(action: {isViewPresented.toggle()}){

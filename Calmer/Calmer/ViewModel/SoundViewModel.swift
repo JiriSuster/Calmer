@@ -92,13 +92,11 @@ class SoundViewModel: ObservableObject{
     }
     
     func addSampleData(){
-        // create sample map items
         let first_song = SoundItem(name: "Morning breathing", category: "Focus", image: UIImage(named: "sea") ?? UIImage(), tape: "morning")
         let second_song = SoundItem(name: "Evening meditation", category: "Calm", image: UIImage(named: "nightsky") ?? UIImage(), tape: "evening")
         let third_song = SoundItem(name: "Fireplace", category: "Relaxing", image: UIImage(named: "fireplace") ?? UIImage(), tape: "fireplace")
         let fourth_song = SoundItem(name: "Forest rain", category: "Relief", image: UIImage(named: "forest") ?? UIImage(), tape: "rain")
         let five_song = SoundItem(name: "River", category: "Sleep", image: UIImage(named: "river") ?? UIImage(), tape: "river")
-        // covert to PoIs
         addNewSoundItem(soundItem: first_song)
         addNewSoundItem(soundItem: second_song)
         addNewSoundItem(soundItem: third_song)
@@ -106,6 +104,5 @@ class SoundViewModel: ObservableObject{
         addNewSoundItem(soundItem: five_song)
         // save to DB
     }
-
     
 }

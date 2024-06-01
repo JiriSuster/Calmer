@@ -20,8 +20,8 @@ struct MusicContentView: View {
                     .padding(.horizontal,12)
                 
                 HStack{
-                    LargeSoundElementContentView(soundParameters: soundViewModel.soundItems[0])
-                    LargeSoundElementContentView(soundParameters: soundViewModel.soundItems[1])
+                    LargeSoundElementContentView(currentIndex: 0, soundItems: soundViewModel.soundItems)
+                    LargeSoundElementContentView(currentIndex: 1, soundItems: soundViewModel.soundItems)
                 }.padding(.horizontal,6).padding(.vertical,12)
                 
                 Text("Sounds")
@@ -29,9 +29,9 @@ struct MusicContentView: View {
                     .frame(maxWidth: .infinity, alignment: .leading)
                     .padding(.horizontal,12)
                 VStack{
-                    SoundElementContentView(soundParameters: soundViewModel.soundItems[2])
-                    SoundElementContentView(soundParameters: soundViewModel.soundItems[3])
-                    SoundElementContentView(soundParameters: soundViewModel.soundItems[4])
+                    SoundElementContentView(currentIndex: 2, soundItems: soundViewModel.soundItems)
+                    SoundElementContentView(currentIndex: 3, soundItems: soundViewModel.soundItems)
+                    SoundElementContentView(currentIndex: 4, soundItems: soundViewModel.soundItems)
                 }
                 
                 
