@@ -9,9 +9,13 @@ import SwiftUI
 
 @main
 struct CalmerApp: App {
+    @StateObject private var dataController = CoreDataController()
+    
     var body: some Scene {
         WindowGroup {
-            TabsController()
-        }
+                        TabsController(soundViewModel: SoundViewModel(moc: dataController.container.viewContext))
+                            .environment(\.managedObjectContext, dataController.container.viewContext)
+                    }
+
     }
 }

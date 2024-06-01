@@ -17,6 +17,20 @@
 		880B33372C08A1F000DE69CB /* NotesContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 880B33362C08A1F000DE69CB /* NotesContentView.swift */; };
 		880B33392C08A20300DE69CB /* MusicContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 880B33382C08A20300DE69CB /* MusicContentView.swift */; };
 		880B333B2C0917F300DE69CB /* PhoneElementContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 880B333A2C0917F300DE69CB /* PhoneElementContentView.swift */; };
+		880B333D2C09E71400DE69CB /* SoundElementContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 880B333C2C09E71400DE69CB /* SoundElementContentView.swift */; };
+		880B333F2C09E97D00DE69CB /* LargeSoundElementContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 880B333E2C09E97D00DE69CB /* LargeSoundElementContentView.swift */; };
+		880B33492C0A1F4700DE69CB /* db.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 880B33472C0A1F4700DE69CB /* db.xcdatamodeld */; };
+		880B334B2C0A253500DE69CB /* SoundItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 880B334A2C0A253500DE69CB /* SoundItem.swift */; };
+		880B334D2C0A255D00DE69CB /* SoundViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 880B334C2C0A255D00DE69CB /* SoundViewModel.swift */; };
+		880B334F2C0A408800DE69CB /* CoreDataController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 880B334E2C0A408800DE69CB /* CoreDataController.swift */; };
+		880B33512C0A620500DE69CB /* MusicPlayerContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 880B33502C0A620500DE69CB /* MusicPlayerContentView.swift */; };
+		880B335B2C0B418600DE69CB /* evening.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 880B33552C0B418400DE69CB /* evening.mp3 */; };
+		880B335C2C0B418600DE69CB /* morning.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 880B33562C0B418400DE69CB /* morning.mp3 */; };
+		880B335D2C0B418600DE69CB /* rain.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 880B33572C0B418500DE69CB /* rain.mp3 */; };
+		880B335E2C0B418600DE69CB /* sea.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 880B33582C0B418500DE69CB /* sea.mp3 */; };
+		880B33602C0B418600DE69CB /* fireplace.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 880B335A2C0B418600DE69CB /* fireplace.mp3 */; };
+		880B33622C0B434300DE69CB /* SoundPlayerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 880B33612C0B434300DE69CB /* SoundPlayerViewModel.swift */; };
+		880B33642C0B4D1F00DE69CB /* river.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 880B33632C0B4D1F00DE69CB /* river.mp3 */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -31,6 +45,20 @@
 		880B33362C08A1F000DE69CB /* NotesContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotesContentView.swift; sourceTree = "<group>"; };
 		880B33382C08A20300DE69CB /* MusicContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicContentView.swift; sourceTree = "<group>"; };
 		880B333A2C0917F300DE69CB /* PhoneElementContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhoneElementContentView.swift; sourceTree = "<group>"; };
+		880B333C2C09E71400DE69CB /* SoundElementContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SoundElementContentView.swift; sourceTree = "<group>"; };
+		880B333E2C09E97D00DE69CB /* LargeSoundElementContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LargeSoundElementContentView.swift; sourceTree = "<group>"; };
+		880B33482C0A1F4700DE69CB /* db.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = db.xcdatamodel; sourceTree = "<group>"; };
+		880B334A2C0A253500DE69CB /* SoundItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SoundItem.swift; sourceTree = "<group>"; };
+		880B334C2C0A255D00DE69CB /* SoundViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SoundViewModel.swift; sourceTree = "<group>"; };
+		880B334E2C0A408800DE69CB /* CoreDataController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataController.swift; sourceTree = "<group>"; };
+		880B33502C0A620500DE69CB /* MusicPlayerContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicPlayerContentView.swift; sourceTree = "<group>"; };
+		880B33552C0B418400DE69CB /* evening.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = evening.mp3; sourceTree = "<group>"; };
+		880B33562C0B418400DE69CB /* morning.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = morning.mp3; sourceTree = "<group>"; };
+		880B33572C0B418500DE69CB /* rain.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = rain.mp3; sourceTree = "<group>"; };
+		880B33582C0B418500DE69CB /* sea.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = sea.mp3; sourceTree = "<group>"; };
+		880B335A2C0B418600DE69CB /* fireplace.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = fireplace.mp3; sourceTree = "<group>"; };
+		880B33612C0B434300DE69CB /* SoundPlayerViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SoundPlayerViewModel.swift; sourceTree = "<group>"; };
+		880B33632C0B4D1F00DE69CB /* river.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = river.mp3; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -63,6 +91,8 @@
 		880B331C2C089AD700DE69CB /* Calmer */ = {
 			isa = PBXGroup;
 			children = (
+				880B33522C0B409200DE69CB /* Music */,
+				880B33472C0A1F4700DE69CB /* db.xcdatamodeld */,
 				880B332D2C089B4200DE69CB /* ViewModel */,
 				880B332C2C089B3A00DE69CB /* Model */,
 				880B332B2C089B2600DE69CB /* View */,
@@ -91,6 +121,9 @@
 				880B33362C08A1F000DE69CB /* NotesContentView.swift */,
 				880B33382C08A20300DE69CB /* MusicContentView.swift */,
 				880B333A2C0917F300DE69CB /* PhoneElementContentView.swift */,
+				880B333C2C09E71400DE69CB /* SoundElementContentView.swift */,
+				880B333E2C09E97D00DE69CB /* LargeSoundElementContentView.swift */,
+				880B33502C0A620500DE69CB /* MusicPlayerContentView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -98,6 +131,8 @@
 		880B332C2C089B3A00DE69CB /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				880B334A2C0A253500DE69CB /* SoundItem.swift */,
+				880B334E2C0A408800DE69CB /* CoreDataController.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -105,8 +140,23 @@
 		880B332D2C089B4200DE69CB /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
+				880B334C2C0A255D00DE69CB /* SoundViewModel.swift */,
+				880B33612C0B434300DE69CB /* SoundPlayerViewModel.swift */,
 			);
 			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		880B33522C0B409200DE69CB /* Music */ = {
+			isa = PBXGroup;
+			children = (
+				880B33632C0B4D1F00DE69CB /* river.mp3 */,
+				880B33552C0B418400DE69CB /* evening.mp3 */,
+				880B335A2C0B418600DE69CB /* fireplace.mp3 */,
+				880B33562C0B418400DE69CB /* morning.mp3 */,
+				880B33572C0B418500DE69CB /* rain.mp3 */,
+				880B33582C0B418500DE69CB /* sea.mp3 */,
+			);
+			path = Music;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -167,8 +217,14 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				880B335E2C0B418600DE69CB /* sea.mp3 in Resources */,
 				880B33252C089AD900DE69CB /* Preview Assets.xcassets in Resources */,
+				880B335D2C0B418600DE69CB /* rain.mp3 in Resources */,
 				880B33222C089AD900DE69CB /* Assets.xcassets in Resources */,
+				880B335B2C0B418600DE69CB /* evening.mp3 in Resources */,
+				880B33602C0B418600DE69CB /* fireplace.mp3 in Resources */,
+				880B335C2C0B418600DE69CB /* morning.mp3 in Resources */,
+				880B33642C0B4D1F00DE69CB /* river.mp3 in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -182,11 +238,19 @@
 				880B33352C089EFA00DE69CB /* TabsController.swift in Sources */,
 				880B33312C089D8500DE69CB /* ContactsContentView.swift in Sources */,
 				880B333B2C0917F300DE69CB /* PhoneElementContentView.swift in Sources */,
+				880B333F2C09E97D00DE69CB /* LargeSoundElementContentView.swift in Sources */,
+				880B33492C0A1F4700DE69CB /* db.xcdatamodeld in Sources */,
 				880B331E2C089AD700DE69CB /* CalmerApp.swift in Sources */,
+				880B334B2C0A253500DE69CB /* SoundItem.swift in Sources */,
+				880B33622C0B434300DE69CB /* SoundPlayerViewModel.swift in Sources */,
 				880B332F2C089B7600DE69CB /* MainPageContentView.swift in Sources */,
 				880B33372C08A1F000DE69CB /* NotesContentView.swift in Sources */,
+				880B334D2C0A255D00DE69CB /* SoundViewModel.swift in Sources */,
+				880B334F2C0A408800DE69CB /* CoreDataController.swift in Sources */,
+				880B33512C0A620500DE69CB /* MusicPlayerContentView.swift in Sources */,
 				880B33392C08A20300DE69CB /* MusicContentView.swift in Sources */,
 				880B33332C089DA800DE69CB /* AnimationContentView.swift in Sources */,
+				880B333D2C09E71400DE69CB /* SoundElementContentView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -390,6 +454,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		880B33472C0A1F4700DE69CB /* db.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				880B33482C0A1F4700DE69CB /* db.xcdatamodel */,
+			);
+			currentVersion = 880B33482C0A1F4700DE69CB /* db.xcdatamodel */;
+			path = db.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 880B33122C089AD700DE69CB /* Project object */;
 }

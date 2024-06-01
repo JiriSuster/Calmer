@@ -6,3 +6,12 @@
 //
 
 import Foundation
+import SwiftUI
+
+struct SoundItem: Identifiable {
+    var id = UUID()
+    var name: String
+    var category: String
+    var image: UIImage
+    var tape: String
+}
