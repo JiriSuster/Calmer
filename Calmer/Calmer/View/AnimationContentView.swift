@@ -37,7 +37,7 @@ struct AnimationContentView: View {
                         index in Circle()
                             .fill(Color.indigo.gradient.opacity(0.5))
                             .frame(width: 150,height: 150)
-                            .offset(x: self.isAnimation ? 75 : 0)
+                            .offset(x: self.isAnimation ? 70 : 0)
                             .rotationEffect(.init(degrees: Double(index) * 45))
                     }
                 }

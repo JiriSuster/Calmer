@@ -16,6 +16,7 @@ class SoundPlayerViewModel: ObservableObject{
     
     @Published var currentTime: TimeInterval = 0
     @Published var isDragging = false
+    @Published var isRepeater = false
     
     //selected sound
     var currentIndex: Int
@@ -109,6 +110,15 @@ class SoundPlayerViewModel: ObservableObject{
         prepareNewSound()
     }
     
+    func setRandomSound() {
+        var randSoundIndex = Int.random(in: 0...(self.soundItems.count - 1))
+        while self.currentIndex == randSoundIndex {
+            randSoundIndex = Int.random(in: 0...(self.soundItems.count - 1))
+        }
+        self.currentIndex = randSoundIndex
+        prepareNewSound()
+    }
+    
     private func prepareNewSound(){
         do{
             let resourcePath = Bundle.main.url(forResource: self.soundItems[currentIndex].tape, withExtension: "mp3")
@@ -122,7 +132,14 @@ class SoundPlayerViewModel: ObservableObject{
     
     private func checkSoundEnd() {
         if Int(self.currentTime) == self.duration {
-            setNextSound()
+            if self.isRepeater {
+                guard let player = audioPlayer else { return }
+                player.currentTime = 0
+                player.play()
+            }else{
+                setNextSound()
+            }
+            
         }
     }
     

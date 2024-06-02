@@ -35,7 +35,8 @@ struct MusicPlayerContentView: View {
                         if !editing {
                             soundPlayerViewModel.setCurrentTime(soundPlayerViewModel.currentTime)
                         }
-                }).padding()
+                }).padding().accentColor(.indigo)
+                    
                 
                 HStack{
                     Text(soundPlayerViewModel.getFormatedCurrentTime()).foregroundStyle(.gray)
@@ -44,6 +45,15 @@ struct MusicPlayerContentView: View {
                 }.padding(.horizontal,20)
                 
                 HStack{
+                    Button(action: {
+                        soundPlayerViewModel.setRandomSound()
+                    }) {
+                        Image(systemName: "shuffle")
+                            .resizable()
+                            .frame(width: 20, height: 20)
+                            .foregroundColor(.gray)
+                            .opacity(0.5)
+                    }.padding()
                     
                     Button(action: {
                         soundPlayerViewModel.setPrevSound()
@@ -65,8 +75,7 @@ struct MusicPlayerContentView: View {
                             .resizable()
                             .frame(width: 60, height: 60)
                             .foregroundColor(.black)
-                    }.padding()
-                    
+                    }
                     
                     Button(action: {
                         soundPlayerViewModel.setNextSound()
@@ -75,6 +84,16 @@ struct MusicPlayerContentView: View {
                             .resizable()
                             .frame(width: 40, height: 40)
                             .foregroundColor(.black)
+                    }.padding()
+                    
+                    Button(action: {
+                        soundPlayerViewModel.isRepeater.toggle()
+                    }) {
+                        Image(systemName: "repeat")
+                            .resizable()
+                            .frame(width: 20, height: 20)
+                            .foregroundColor(soundPlayerViewModel.isRepeater ? .indigo : .gray)
+                            .opacity(soundPlayerViewModel.isRepeater ? 1 : 0.8)
                     }.padding()
                     
                 }
