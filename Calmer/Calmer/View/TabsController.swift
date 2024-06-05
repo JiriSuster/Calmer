@@ -2,7 +2,7 @@
 //  TabController.swift
 //  Calmer
 //
-//  Created by Adéla Kulíšková on 30.05.2024.
+//  Created by David Krčmář on 30.05.2024.
 //
 
 import SwiftUI

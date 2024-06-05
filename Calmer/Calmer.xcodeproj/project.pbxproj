@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		719CAF3C2C107ED40093A6D7 /* AddNoteContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 719CAF3B2C107ED40093A6D7 /* AddNoteContentView.swift */; };
+		719CAF3E2C109B440093A6D7 /* NoteComponentContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 719CAF3D2C109B440093A6D7 /* NoteComponentContentView.swift */; };
 		880B331E2C089AD700DE69CB /* CalmerApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 880B331D2C089AD700DE69CB /* CalmerApp.swift */; };
 		880B33222C089AD900DE69CB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 880B33212C089AD900DE69CB /* Assets.xcassets */; };
 		880B33252C089AD900DE69CB /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 880B33242C089AD900DE69CB /* Preview Assets.xcassets */; };
@@ -34,6 +36,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		719CAF3B2C107ED40093A6D7 /* AddNoteContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddNoteContentView.swift; sourceTree = "<group>"; };
+		719CAF3D2C109B440093A6D7 /* NoteComponentContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteComponentContentView.swift; sourceTree = "<group>"; };
 		880B331A2C089AD700DE69CB /* Calmer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Calmer.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		880B331D2C089AD700DE69CB /* CalmerApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalmerApp.swift; sourceTree = "<group>"; };
 		880B33212C089AD900DE69CB /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -124,6 +128,8 @@
 				880B333C2C09E71400DE69CB /* SoundElementContentView.swift */,
 				880B333E2C09E97D00DE69CB /* LargeSoundElementContentView.swift */,
 				880B33502C0A620500DE69CB /* MusicPlayerContentView.swift */,
+				719CAF3B2C107ED40093A6D7 /* AddNoteContentView.swift */,
+				719CAF3D2C109B440093A6D7 /* NoteComponentContentView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -239,6 +245,7 @@
 				880B33312C089D8500DE69CB /* ContactsContentView.swift in Sources */,
 				880B333B2C0917F300DE69CB /* PhoneElementContentView.swift in Sources */,
 				880B333F2C09E97D00DE69CB /* LargeSoundElementContentView.swift in Sources */,
+				719CAF3C2C107ED40093A6D7 /* AddNoteContentView.swift in Sources */,
 				880B33492C0A1F4700DE69CB /* db.xcdatamodeld in Sources */,
 				880B331E2C089AD700DE69CB /* CalmerApp.swift in Sources */,
 				880B334B2C0A253500DE69CB /* SoundItem.swift in Sources */,
@@ -250,6 +257,7 @@
 				880B33512C0A620500DE69CB /* MusicPlayerContentView.swift in Sources */,
 				880B33392C08A20300DE69CB /* MusicContentView.swift in Sources */,
 				880B33332C089DA800DE69CB /* AnimationContentView.swift in Sources */,
+				719CAF3E2C109B440093A6D7 /* NoteComponentContentView.swift in Sources */,
 				880B333D2C09E71400DE69CB /* SoundElementContentView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

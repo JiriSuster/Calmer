@@ -2,7 +2,7 @@
 //  NotesContentView.swift
 //  Calmer
 //
-//  Created by Adéla Kulíšková on 30.05.2024.
+//  Created by David Krčmář on 30.05.2024.
 //
 
 import SwiftUI
@@ -12,7 +12,9 @@ struct NotesContentView: View {
         
         NavigationView {
                     VStack{
-                        Text("Hello3")
+                        NoteComponentContentView(name: "Awesome", description: "Morning yoga session in the garden, followed by...", date: "13. Sep", emoji: "🥰")
+                        NoteComponentContentView(name: "Terrible", description: "Morning yoga session in the garden, followed by...", date: "13. Sep", emoji: "🤢")
+                        NoteComponentContentView(name: "Sad", description: "Morning yoga session in the garden, followed by...", date: "13. Sep", emoji: "😢")
                     }
                     .toolbar{
                         ToolbarItem(placement: .navigationBarLeading) {
@@ -20,14 +22,15 @@ struct NotesContentView: View {
                                 .font(.largeTitle)
                                         }
                         ToolbarItem(placement: .navigationBarTrailing){
-                            Button(action: {}){
-                                Text("Add note")
+                            NavigationLink{
+                                AddNoteContentView()
+                                    .navigationBarBackButtonHidden(true)
+                            } label: {
+                                Text("add note")
                             }
                         }
                     }
                 }
-        
-        
     }
 }
 
