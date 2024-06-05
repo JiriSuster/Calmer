@@ -17,23 +17,7 @@ struct AddNoteContentView: View {
                             Text("Name")
                             TextField("Value", text: /*@START_MENU_TOKEN@*//*@PLACEHOLDER=Value@*/.constant("")/*@END_MENU_TOKEN@*/)
                         }
-                        GroupBox {
-                            VStack(alignment: .leading) {
-                                Text("Select your mood")
-                                
-                                HStack {
-                                    ForEach(["🤢", "😢", "😐", "😊", "🥰"], id: \.self) { emoji in
-                                        Button(action: {
-                                            self.selectedEmoji = emoji
-                                        }) {
-                                            Text(emoji)
-                                                .font(.system(size: 55))
-                                                .opacity(selectedEmoji == emoji ? 1.0 : 0.3)
-                                        }
-                                    }
-                                }
-                            }
-                        }
+                        SelectMoodContentView()
                         HStack{
                             Text("Description")
 
