@@ -8,12 +8,12 @@
 import SwiftUI
 
 struct SelectMoodComponentContentView: View {
-    @State var selectedEmoji = "😐"
+    @Binding var selectedEmoji: String
+
     var body: some View {
         GroupBox {
             VStack(alignment: .leading) {
                 Text("Select your mood")
-                
                 HStack {
                     ForEach(["🤢", "😢", "😐", "😊", "🥰"], id: \.self) { emoji in
                         Button(action: {
@@ -31,5 +31,5 @@ struct SelectMoodComponentContentView: View {
 }
 
 #Preview {
-    SelectMoodComponentContentView()
+    SelectMoodComponentContentView(selectedEmoji: .constant("😐"))
 }

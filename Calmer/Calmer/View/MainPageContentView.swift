@@ -38,7 +38,7 @@ struct MainPageContentView: View {
                         Mood(moodType: "Disappointed", count: 7),
                         Mood(moodType: "Sad", count: 20)
                     ])
-                    SelectMoodComponentContentView()
+                    SelectMoodComponentContentView(selectedEmoji: $selectedEmoji)
                     Button(action: {
                                 // Your action here
                             }) {

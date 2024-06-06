@@ -4,55 +4,60 @@
 //
 //  Created by Jiří Daniel Šuster on 05.06.2024.
 //
-
 import SwiftUI
-//kazda zprava ma 
+
 struct AddNoteContentView: View {
-    @State var selectedEmoji = "😐"
+    @Environment(\.managedObjectContext) private var viewContext
+    @StateObject private var viewModel = NoteViewModel()
+    @State private var name: String = ""
+    @State private var text: String = ""
+    @State private var selectedEmoji: String = "😐"
+
     var body: some View {
         NavigationView {
-            ZStack{
+            ZStack {
                 StyleConfig.backgroundColor
                     .edgesIgnoringSafeArea(.all)
-                VStack{
-                    HStack{
+                VStack {
+                    HStack {
                         Text("Name")
-                        TextField("Value", text: /*@START_MENU_TOKEN@*//*@PLACEHOLDER=Value@*/.constant("")/*@END_MENU_TOKEN@*/)
+                        TextField("Value", text: $name)
                     }
-                    SelectMoodComponentContentView()
-                    HStack{
+                    SelectMoodComponentContentView(selectedEmoji: $selectedEmoji)
+                    HStack {
                         Text("Description")
-                        
-                        TextField("Placeholder", text: /*@START_MENU_TOKEN@*//*@PLACEHOLDER=Value@*/.constant("")/*@END_MENU_TOKEN@*/,axis: .vertical).padding(10)
-                        
+                        TextField("Placeholder", text: $text, axis: .vertical).padding(10)
                     }
-                    
-                    
                 }
-                .toolbar{
-                    ToolbarItem(placement: .topBarLeading){
-                        NavigationLink{
+                .toolbar {
+                    ToolbarItem(placement: .topBarLeading) {
+                        NavigationLink {
                             NotesContentView().navigationBarBackButtonHidden(true)
                         } label: {
                             Text("Cancel")
                         }
                     }
-                    
                     ToolbarItem(placement: .principal) {
                         Text("New note")
                             .font(.body)
                     }
-                    ToolbarItem(placement: .navigationBarTrailing){
+                    ToolbarItem(placement: .navigationBarTrailing) {
                         Button("Save") {
-                            /*TODO ONCLICK*/
+                            viewModel.saveNote(
+                                context: viewContext,
+                                name: name,
+                                text: text,
+                                mood: selectedEmoji
+                            )
                         }
                     }
                 }
-                .backgroundStyle(Color.white).shadow(color:StyleConfig.shadowColor, radius: StyleConfig.shadowRadius)
+                .backgroundStyle(Color.white).shadow(color: StyleConfig.shadowColor, radius: StyleConfig.shadowRadius)
             }
-                }
+        }
     }
 }
+
 #Preview {
     AddNoteContentView()
 }
