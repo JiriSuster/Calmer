@@ -15,17 +15,6 @@ struct Mood: Identifiable {
     let count: Int
 }
 
-struct MoodCounterChart_Previews: PreviewProvider {
-    static var previews: some View {
-        MoodCounterContentView(moodData: [
-            Mood(moodType: "Happy", count: 10),
-            Mood(moodType: "Neutral", count: 5),
-            Mood(moodType: "Satisfied", count: 15),
-            Mood(moodType: "Disappointed", count: 7),
-            Mood(moodType: "Sad", count: 20)
-        ])
-    }
-}
 
 struct MoodCounterContentView: View {
     let moodData: [Mood]
@@ -55,5 +44,18 @@ struct MoodCounterContentView: View {
                 .chartLegend(.hidden)
             }
         }.padding(.horizontal, 16).backgroundStyle(Color.white).shadow(color: StyleConfig.shadowColor, radius: StyleConfig.shadowRadius)
+    }
+}
+
+
+struct MoodCounterChart_Previews: PreviewProvider {
+    static var previews: some View {
+        MoodCounterContentView(moodData: [
+            Mood(moodType: "Happy", count: 10),
+            Mood(moodType: "Neutral", count: 5),
+            Mood(moodType: "Satisfied", count: 15),
+            Mood(moodType: "Disappointed", count: 7),
+            Mood(moodType: "Sad", count: 20)
+        ])
     }
 }
