@@ -19,15 +19,15 @@ struct NoteComponentContentView: View {
                     .font(.system(size: 55))
                 VStack(alignment: .leading) {
                     HStack {
-                        Text(name).font(.system(size: 20))
+                        Text(name).font(.system(size: 16))
                         Spacer()
                         Text(date).foregroundColor(.gray)
                     }
                     Text(description).foregroundColor(.gray)
-                        .font(.system(size: 16))
+                        .font(.system(size: 14))
                 }
             }
-        }.padding(.horizontal,20)
+        }.padding(.horizontal,20).backgroundStyle(Color.white).shadow(color: StyleConfig.shadowColor, radius: StyleConfig.shadowRadius)
     }
 }
 

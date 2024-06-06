@@ -14,51 +14,54 @@ struct SoundElementContentView: View {
     
     
     var body: some View {
-        HStack {
-                    
-            Image(uiImage: soundItems[currentIndex].image)
-                        .resizable()
-                        .aspectRatio(contentMode: .fill)
-                        .frame(width: 50, height: 80)
-            
-                    VStack(alignment: .leading) {
-                        Text("\(soundItems[currentIndex].name)")
-                            .font(.headline)
-                            .padding(.bottom, 2)
-                        Text("\(soundItems[currentIndex].category)")
-                            .font(.caption)
-                            .padding(.horizontal,12)
-                            .padding(.vertical,8)
-                            .background(
-                                    RoundedRectangle(cornerRadius: 20)
-                                    .fill(Color.indigo.opacity(0.5))
-                                        )
-                            .foregroundColor(.white)
-                            .foregroundColor(.secondary)
-                    }
-                    .padding(.horizontal,40)
-                    
-                    Spacer()
-                    
-                    Button(action: {
-                        isViewPresented.toggle()
-                        print("Play button tapped for")
-                    }) {
-                        Image(systemName: "play.circle.fill")
-                            .resizable()
-                            .frame(width: 40, height: 40)
-                            .foregroundColor(.yellow)
-                    }.sheet(isPresented: $isViewPresented){
-                        MusicPlayerContentView(isViewPresented: $isViewPresented, soundPlayerViewModel: SoundPlayerViewModel(currentIndex: self.currentIndex, soundItems: self.soundItems))
-                            .presentationDetents([.fraction(0.75) , .large])
-                    }
-                    .padding()
+        ZStack{
+            HStack {
+                
+                Image(uiImage: soundItems[currentIndex].image)
+                    .resizable()
+                    .aspectRatio(contentMode: .fill)
+                    .frame(width: 50, height: 80)
+                
+                VStack(alignment: .leading) {
+                    Text("\(soundItems[currentIndex].name)")
+                        .font(.headline)
+                        .padding(.bottom, 2)
+                    Text("\(soundItems[currentIndex].category)")
+                        .font(.caption)
+                        .padding(.horizontal,12)
+                        .padding(.vertical,8)
+                        .background(
+                            RoundedRectangle(cornerRadius: 20)
+                                .fill(Color.indigo.opacity(0.5))
+                        )
+                        .foregroundColor(.white)
+                        .foregroundColor(.secondary)
                 }
-                .background(Color.gray.opacity(0.1))
-                .cornerRadius(10)
-                .onTapGesture {
+                .padding(.horizontal,40)
+                
+                Spacer()
+                
+                Button(action: {
                     isViewPresented.toggle()
-                }.padding(.horizontal,6).padding(.vertical,3)
+                    print("Play button tapped for")
+                }) {
+                    Image(systemName: "play.circle.fill")
+                        .resizable()
+                        .frame(width: 40, height: 40)
+                        .foregroundColor(.yellow)
+                }.sheet(isPresented: $isViewPresented){
+                    MusicPlayerContentView(isViewPresented: $isViewPresented, soundPlayerViewModel: SoundPlayerViewModel(currentIndex: self.currentIndex, soundItems: self.soundItems))
+                        .presentationDetents([.fraction(0.75) , .large])
+                }
+                .padding()
+            }
+            .background(Color.white)
+            .cornerRadius(10)
+            .onTapGesture {
+                isViewPresented.toggle()
+            }.padding(.horizontal,6).padding(.vertical,3)
+        }.shadow(color: StyleConfig.shadowColor, radius: StyleConfig.shadowRadius)
+
         
     }
 }

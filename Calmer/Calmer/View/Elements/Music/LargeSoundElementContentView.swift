@@ -14,55 +14,57 @@ struct LargeSoundElementContentView: View {
     
     
     var body: some View {
-        VStack {
-
-            Image(uiImage: soundItems[currentIndex].image)
-                .resizable()
-                .aspectRatio(contentMode: .fill)
-                .frame(width: 80, height: 130)
+        ZStack{
+            VStack {
                 
-            Text("\(soundItems[currentIndex].name)")
-                .font(.headline)
-            
-            HStack{
+                Image(uiImage: soundItems[currentIndex].image)
+                    .resizable()
+                    .aspectRatio(contentMode: .fill)
+                    .frame(width: 80, height: 130)
                 
-                VStack(alignment: .leading){
-                    Text("\(soundItems[currentIndex].category)")
-                        .font(.caption)
-                        .padding(.horizontal,12)
-                        .padding(.vertical,8)
-                        .background(
+                Text("\(soundItems[currentIndex].name)")
+                    .font(.headline)
+                
+                HStack{
+                    
+                    VStack(alignment: .leading){
+                        Text("\(soundItems[currentIndex].category)")
+                            .font(.caption)
+                            .padding(.horizontal,12)
+                            .padding(.vertical,8)
+                            .background(
                                 RoundedRectangle(cornerRadius: 20)
-                                .fill(Color.indigo.opacity(0.5))
-                                    )
-                        .foregroundColor(.white)
-                        .foregroundColor(.secondary)
-                }.padding(.horizontal,12)
-                Spacer()
-                
-                Button(action: {
-                    isViewPresented.toggle()
-                    print("Play button tapped for")
-                }) {
-                    Image(systemName: "play.circle.fill")
-                        .resizable()
-                        .frame(width: 40, height: 40)
-                        .foregroundColor(.yellow)
-                }.padding(.horizontal,12)
-                    .sheet(isPresented: $isViewPresented){
-                        MusicPlayerContentView(isViewPresented: $isViewPresented, soundPlayerViewModel: SoundPlayerViewModel(currentIndex: self.currentIndex, soundItems: self.soundItems))
-                            .presentationDetents([.fraction(0.75) , .large])
-                    }
-                                
-                
-            }.padding(.vertical,5)
+                                    .fill(Color.indigo.opacity(0.5))
+                            )
+                            .foregroundColor(.white)
+                            .foregroundColor(.secondary)
+                    }.padding(.horizontal,12)
+                    Spacer()
+                    
+                    Button(action: {
+                        isViewPresented.toggle()
+                        print("Play button tapped for")
+                    }) {
+                        Image(systemName: "play.circle.fill")
+                            .resizable()
+                            .frame(width: 40, height: 40)
+                            .foregroundColor(.yellow)
+                    }.padding(.horizontal,12)
+                        .sheet(isPresented: $isViewPresented){
+                            MusicPlayerContentView(isViewPresented: $isViewPresented, soundPlayerViewModel: SoundPlayerViewModel(currentIndex: self.currentIndex, soundItems: self.soundItems))
+                                .presentationDetents([.fraction(0.75) , .large])
+                        }
+                    
+                    
+                }.padding(.vertical,5)
             }.onTapGesture {
                 isViewPresented.toggle()
             }
-                .padding(.vertical,3)
-                .background(Color.gray.opacity(0.1))
-                .cornerRadius(15)
-                .padding(.horizontal,6)
-                .frame(width: 180, height: 200)
+            .padding(.vertical,3)
+            .background(Color.white)
+            .cornerRadius(15)
+            .padding(.horizontal,6)
+            .frame(width: 180, height: 200)
+        }.backgroundStyle(Color.white).shadow(color: StyleConfig.shadowColor, radius: StyleConfig.shadowRadius)
     }
 }

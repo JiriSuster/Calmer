@@ -54,6 +54,6 @@ struct MoodCounterContentView: View {
                 .chartYAxis(.hidden)
                 .chartLegend(.hidden)
             }
-        }.padding(.horizontal, 16)
+        }.padding(.horizontal, 16).backgroundStyle(Color.white).shadow(color: StyleConfig.shadowColor, radius: StyleConfig.shadowRadius)
     }
 }

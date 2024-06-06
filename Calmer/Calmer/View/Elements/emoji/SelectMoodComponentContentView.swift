@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct SelectMoodContentView: View {
+struct SelectMoodComponentContentView: View {
     @State var selectedEmoji = "😐"
     var body: some View {
         GroupBox {
@@ -26,10 +26,10 @@ struct SelectMoodContentView: View {
                     }
                 }
             }
-        }
+        }.backgroundStyle(Color.white).shadow(color: StyleConfig.shadowColor, radius: StyleConfig.shadowRadius)
     }
 }
 
 #Preview {
-    SelectMoodContentView()
+    SelectMoodComponentContentView()
 }
