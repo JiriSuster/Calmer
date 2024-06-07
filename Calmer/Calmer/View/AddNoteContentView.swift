@@ -8,7 +8,7 @@ import SwiftUI
 
 struct AddNoteContentView: View {
     @Environment(\.managedObjectContext) private var viewContext
-    @StateObject private var viewModel = NoteViewModel()
+    @StateObject var noteviewModel : NoteViewModel
     @State private var name: String = ""
     @State private var text: String = ""
     @State private var selectedEmoji: String = "😐"
@@ -32,7 +32,7 @@ struct AddNoteContentView: View {
                 .toolbar {
                     ToolbarItem(placement: .topBarLeading) {
                         NavigationLink {
-                            NotesContentView().navigationBarBackButtonHidden(true)
+                            NotesContentView(noteViewModel: noteviewModel).navigationBarBackButtonHidden(true)
                         } label: {
                             Text("Cancel")
                         }
@@ -43,7 +43,7 @@ struct AddNoteContentView: View {
                     }
                     ToolbarItem(placement: .navigationBarTrailing) {
                         Button("Save") {
-                            viewModel.saveNote(
+                            noteviewModel.saveNote(
                                 context: viewContext,
                                 name: name,
                                 text: text,
@@ -56,8 +56,4 @@ struct AddNoteContentView: View {
             }
         }
     }
-}
-
-#Preview {
-    AddNoteContentView()
 }

@@ -9,12 +9,10 @@ import SwiftUI
 import CoreData
 
 struct NotesContentView: View {
-    @FetchRequest(
-        sortDescriptors: [NSSortDescriptor(keyPath: \Note.date, ascending: false)],
-        animation: .default)
-    private var notes: FetchedResults<Note>
+    @StateObject var noteViewModel: NoteViewModel
     
     var body: some View {
+        let notes = noteViewModel.fetchNotes()
         NavigationView {
             List {
                 ForEach(notes) { note in
@@ -32,7 +30,7 @@ struct NotesContentView: View {
             .toolbar {
                 ToolbarItem(placement: .navigationBarTrailing) {
                     NavigationLink {
-                        AddNoteContentView()
+                        AddNoteContentView(noteviewModel: noteViewModel)
                             .navigationBarBackButtonHidden(true)
                     } label: {
                         Text("Add Note")

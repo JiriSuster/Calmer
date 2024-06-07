@@ -13,9 +13,10 @@ struct CalmerApp: App {
     
     var body: some Scene {
         WindowGroup {
-                        TabsController(soundViewModel: SoundViewModel(moc: dataController.container.viewContext))
-                            .environment(\.managedObjectContext, dataController.container.viewContext)
-                    }
-
+            TabsController(
+                soundViewModel: SoundViewModel(moc: dataController.container.viewContext),
+                noteViewModel: NoteViewModel(moc: dataController.container.viewContext)
+            ).environment(\.managedObjectContext, dataController.container.viewContext)
+        }
     }
 }

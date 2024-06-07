@@ -10,6 +10,7 @@ import SwiftUI
 struct TabsController: View {
     @State private var selection = 3
     @StateObject var soundViewModel: SoundViewModel
+    @StateObject var noteViewModel: NoteViewModel
         
     @Environment(\.managedObjectContext) var moc
     @FetchRequest(sortDescriptors: []) var pois: FetchedResults<MusicDb>
@@ -20,7 +21,7 @@ struct TabsController: View {
                 .tabItem {
                     Label("Music", systemImage: "music.note")
                 }.tag(1)
-            NotesContentView()
+            NotesContentView(noteViewModel: .init(moc: moc))
                 .tabItem {
                     Label("Notes", systemImage: "note")
                 }.tag(2)
