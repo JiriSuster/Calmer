@@ -1,10 +1,3 @@
-//
-//  NoteComponentContentView.swift
-//  Calmer
-//
-//  Created by Jiří Daniel Šuster on 05.06.2024.
-//
-
 import SwiftUI
 
 struct NoteComponentContentView: View {
@@ -12,6 +5,7 @@ struct NoteComponentContentView: View {
     let description: String
     let date: String
     let emoji: String
+    @State private var isShowingPopup = false // Add state to control popup
     
     var truncatedName: String {
         if name.count > 20 {
@@ -29,7 +23,6 @@ struct NoteComponentContentView: View {
         }
     }
     
-    
     var body: some View {
         GroupBox {
             HStack {
@@ -45,6 +38,12 @@ struct NoteComponentContentView: View {
                         .font(.system(size: 14))
                 }
             }
+            .onTapGesture {
+                isShowingPopup = true
+            }
+            .sheet(isPresented: $isShowingPopup, content: {
+                PopupContentView(name: name,description: description)
+            })
         }
         .padding(.horizontal, 20)
         .background(Color.white)
@@ -52,6 +51,17 @@ struct NoteComponentContentView: View {
     }
 }
 
-#Preview {
-    NoteComponentContentView(name: "This is a very long note name that should be truncated", description: "This description is also quite long and needs to be truncated after fifty characters", date: "13. Sep", emoji: "🥰")
+struct PopupContentView: View {
+    let name: String
+    let description: String
+    
+    var body: some View {
+        VStack {
+            Text(name)
+            Spacer().frame(height: 20)
+            Text(description)
+
+        }
+        .background(Color.white)
+    }
 }
