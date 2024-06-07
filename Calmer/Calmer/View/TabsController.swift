@@ -14,6 +14,7 @@ struct TabsController: View {
         
     @Environment(\.managedObjectContext) var moc
     @FetchRequest(sortDescriptors: []) var pois: FetchedResults<MusicDb>
+    @FetchRequest(sortDescriptors: []) var notes: FetchedResults<Note>
     
     var body: some View {
         TabView(selection: $selection) {

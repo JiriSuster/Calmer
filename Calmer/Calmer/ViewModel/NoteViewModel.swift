@@ -26,7 +26,7 @@
          }catch{
              print("Some error occured while fetching")
          }
-         return notes
+         return notes.reversed()
          
      }
      

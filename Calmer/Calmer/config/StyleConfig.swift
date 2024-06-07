@@ -10,7 +10,7 @@ import SwiftUI
 
 struct StyleConfig {
     static let backgroundColor = Color.white//Color(white: 0.9, opacity: 0.7)
-    static let shadowColor = Color(.black)
+    static let shadowColor = Color(white: 0.85, opacity: 1)
     static let shadowRadius: CGFloat = 10
     static let buttonColor: Color  = Color(.indigo)
 }
