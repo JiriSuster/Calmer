@@ -8,28 +8,20 @@
 import SwiftUI
 import Charts
 
-
 struct Mood: Identifiable {
     let id = UUID()
     let moodType: String
     let count: Int
 }
 
-
 struct MoodCounterContentView: View {
     let moodData: [Mood]
 
     var body: some View {
-        //var counter = 0
-        GroupBox{
-            VStack(alignment: .leading){
+        GroupBox {
+            VStack(alignment: .leading) {
                 Text("Mood Counter").font(.body)
-                /*ForEach(moodData){ i in
-                    counter += i.count
-                }
-                if(counter != 0){*/
-                if(moodData.first?.count != 0){ //temporary
-                    
+                if(moodData.contains { $0.count > 0 }){
                     Chart(moodData) { mood in
                         BarMark(
                             x: .value("Mood", mood.moodType),
@@ -49,17 +41,17 @@ struct MoodCounterContentView: View {
                     .chartXAxis(.hidden)
                     .chartYAxis(.hidden)
                     .chartLegend(.hidden)
+                } else {
+                    Text("Add your first mood 😊")
+                        .frame(maxWidth: .infinity, alignment: .center)
                 }
-                else{
-                    Text("Add your first mood 😊").frame(maxWidth: /*@START_MENU_TOKEN@*/.infinity/*@END_MENU_TOKEN@*/)
-                }
-                
-                
             }
-        }.padding(.horizontal, 16).backgroundStyle(Color.white).shadow(color: StyleConfig.shadowColor, radius: StyleConfig.shadowRadius)
+        }
+        .padding(.horizontal, 16)
+        .background(Color.white)
+        .shadow(color: StyleConfig.shadowColor, radius: StyleConfig.shadowRadius)
     }
 }
-
 
 struct MoodCounterChart_Previews: PreviewProvider {
     static var previews: some View {
@@ -72,4 +64,3 @@ struct MoodCounterChart_Previews: PreviewProvider {
         ])
     }
 }
-
