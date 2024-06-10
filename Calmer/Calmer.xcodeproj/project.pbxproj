@@ -14,6 +14,7 @@
 		719CAF4A2C10B2DC0093A6D7 /* SelectMoodComponentContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 719CAF492C10B2DC0093A6D7 /* SelectMoodComponentContentView.swift */; };
 		71F3B0802C11DB0100D05204 /* StyleConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71F3B07F2C11DB0100D05204 /* StyleConfig.swift */; };
 		71F3B0822C11F41B00D05204 /* NoteViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71F3B0812C11F41B00D05204 /* NoteViewModel.swift */; };
+		71F68C0D2C17250A000731E7 /* MainPageViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71F68C0C2C17250A000731E7 /* MainPageViewModel.swift */; };
 		880B331E2C089AD700DE69CB /* CalmerApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 880B331D2C089AD700DE69CB /* CalmerApp.swift */; };
 		880B33222C089AD900DE69CB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 880B33212C089AD900DE69CB /* Assets.xcassets */; };
 		880B33252C089AD900DE69CB /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 880B33242C089AD900DE69CB /* Preview Assets.xcassets */; };
@@ -48,6 +49,7 @@
 		719CAF492C10B2DC0093A6D7 /* SelectMoodComponentContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectMoodComponentContentView.swift; sourceTree = "<group>"; };
 		71F3B07F2C11DB0100D05204 /* StyleConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StyleConfig.swift; sourceTree = "<group>"; };
 		71F3B0812C11F41B00D05204 /* NoteViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteViewModel.swift; sourceTree = "<group>"; };
+		71F68C0C2C17250A000731E7 /* MainPageViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainPageViewModel.swift; sourceTree = "<group>"; };
 		880B331A2C089AD700DE69CB /* Calmer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Calmer.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		880B331D2C089AD700DE69CB /* CalmerApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalmerApp.swift; sourceTree = "<group>"; };
 		880B33212C089AD900DE69CB /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -211,6 +213,7 @@
 				880B334C2C0A255D00DE69CB /* SoundViewModel.swift */,
 				880B33612C0B434300DE69CB /* SoundPlayerViewModel.swift */,
 				71F3B0812C11F41B00D05204 /* NoteViewModel.swift */,
+				71F68C0C2C17250A000731E7 /* MainPageViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -304,6 +307,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				71F68C0D2C17250A000731E7 /* MainPageViewModel.swift in Sources */,
 				719CAF462C10A8D10093A6D7 /* ChartElementContentView.swift in Sources */,
 				880B33352C089EFA00DE69CB /* TabsController.swift in Sources */,
 				880B33312C089D8500DE69CB /* ContactsContentView.swift in Sources */,

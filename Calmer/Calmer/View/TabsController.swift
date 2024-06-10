@@ -11,6 +11,7 @@ struct TabsController: View {
     @State private var selection = 3
     @StateObject var soundViewModel: SoundViewModel
     @StateObject var noteViewModel: NoteViewModel
+    @StateObject var mainPageViewModel: MainPageViewModel
         
     @Environment(\.managedObjectContext) var moc
     @FetchRequest(sortDescriptors: []) var pois: FetchedResults<MusicDb>
@@ -26,7 +27,7 @@ struct TabsController: View {
                 .tabItem {
                     Label("Notes", systemImage: "note")
                 }.tag(2)
-            MainPageContentView()
+            MainPageContentView(mainPageViewModel: .init(moc: moc,noteViewModel: noteViewModel), noteViewModel: .init(moc: moc))
                 .tabItem {
                     Label("Home", systemImage: "house")
                 }.tag(3)

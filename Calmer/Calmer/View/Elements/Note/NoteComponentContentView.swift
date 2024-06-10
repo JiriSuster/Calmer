@@ -47,7 +47,7 @@ struct NoteComponentContentView: View {
         }
         .padding(.horizontal, 20)
         .background(Color.white)
-        .shadow(color: StyleConfig.shadowColor, radius: StyleConfig.shadowRadius)
+        .shadow(color: StyleConfig.shadowColor, radius: StyleConfig.shadowRadius)//TODO: premistit tento shadow
     }
 }
 
@@ -65,3 +65,4 @@ struct PopupContentView: View {
         .background(Color.white)
     }
 }
+

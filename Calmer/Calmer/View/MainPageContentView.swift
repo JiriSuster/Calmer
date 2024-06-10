@@ -6,10 +6,16 @@
 //
 
 import SwiftUI
+import CoreData
 
 
 struct MainPageContentView: View {
+    @Environment(\.managedObjectContext) private var viewContext
     @State var selectedEmoji = "😐"
+    @State var moodData: [Mood] = []
+    @StateObject var mainPageViewModel: MainPageViewModel
+    @StateObject var noteViewModel: NoteViewModel
+
     var body: some View {
         
         NavigationView {
@@ -30,35 +36,35 @@ struct MainPageContentView: View {
                         MonthResult(month: "Oct", value: 8, color: .orange),
                         MonthResult(month: "Nov", value: 7, color: .orange),
                         MonthResult(month: "Dec", value: 9, color: .orange),
-                        ])
-                    MoodCounterContentView(moodData: [
-                        Mood(moodType: "Happy", count: 10),
-                        Mood(moodType: "Neutral", count: 5),
-                        Mood(moodType: "Satisfied", count: 15),
-                        Mood(moodType: "Disappointed", count: 7),
-                        Mood(moodType: "Sad", count: 20)
                     ])
+                    MoodCounterContentView(moodData: moodData)
                     SelectMoodComponentContentView(selectedEmoji: $selectedEmoji)
                     Button(action: {
-                                // Your action here
-                            }) {
-                                Text("Save mood")
-                                    .foregroundColor(.white)
-                                    .padding()
-                                    .frame(maxWidth: .infinity)
-                            }
-                            .background(StyleConfig.buttonColor)
-                            .cornerRadius(25)
-                            .padding(.horizontal)
-                        
+                        mainPageViewModel.addEmptyNote(emoji: selectedEmoji)
+                        moodData = mainPageViewModel.getMoodData()
+                    }) {
+                        Text("Save mood")
+                            .foregroundColor(.white)
+                            .padding()
+                            .frame(maxWidth: .infinity)
+                    }
+                    .background(StyleConfig.buttonColor)
+                    .cornerRadius(25)
+                    .padding(.horizontal)
+                    
                 }
             }
-                    .navigationBarTitle("Calmer")
-                }
+            .navigationBarTitle("Calmer")
+        }.onAppear{
+            moodData = mainPageViewModel.getMoodData()
+        }
         
     }
+
 }
 
+/*
 #Preview {
     MainPageContentView()
 }
+*/

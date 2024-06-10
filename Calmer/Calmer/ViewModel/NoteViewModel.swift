@@ -42,6 +42,7 @@
          newNote.name = name
          newNote.text = text
          newNote.mood = mood
+         newNote.id = UUID()
          save()
      }
      

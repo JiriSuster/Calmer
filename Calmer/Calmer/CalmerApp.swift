@@ -15,7 +15,8 @@ struct CalmerApp: App {
         WindowGroup {
             TabsController(
                 soundViewModel: SoundViewModel(moc: dataController.container.viewContext),
-                noteViewModel: NoteViewModel(moc: dataController.container.viewContext)
+                noteViewModel: NoteViewModel(moc: dataController.container.viewContext),
+                mainPageViewModel: MainPageViewModel(moc: dataController.container.viewContext,noteViewModel: .init(moc: dataController.container.viewContext))
             ).environment(\.managedObjectContext, dataController.container.viewContext)
         }
     }

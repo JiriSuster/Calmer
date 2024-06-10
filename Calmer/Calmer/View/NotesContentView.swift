@@ -10,9 +10,9 @@ import CoreData
 
 struct NotesContentView: View {
     @StateObject var noteViewModel: NoteViewModel
+    @State var notes: [Note] = []
     
     var body: some View {
-        let notes = noteViewModel.fetchNotes()
         NavigationView {
             List {
                 ForEach(notes) { note in
@@ -37,6 +37,8 @@ struct NotesContentView: View {
                     }
                 }
             }
+        }.onAppear{
+            notes = noteViewModel.fetchNotes()
         }
     }
 
