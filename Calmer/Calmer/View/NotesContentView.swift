@@ -15,12 +15,10 @@ struct NotesContentView: View {
     var body: some View {
         NavigationView {
             List {
-                ForEach(notes) { note in
+                ForEach($notes, id: \.self) { $note in
                     NoteComponentContentView(
-                        name: note.name ?? "Unnamed",
-                        description: note.text ?? "none",
-                        date: formattedDate(note.date),
-                        emoji: note.mood ?? "😐"
+                        noteViewModel: noteViewModel,
+                        note: $note
                     ).listRowSeparator(.hidden)
                 }
             }

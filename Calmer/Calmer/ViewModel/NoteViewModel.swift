@@ -46,6 +46,16 @@
          save()
      }
      
+     func editNote(note: Note){
+         if let context = note.managedObjectContext {
+             do {
+                 try context.save()
+             } catch {
+                 print("Error saving context: \(error.localizedDescription)")
+             }
+         }
+     }
+     
      func save(){
          if moc.hasChanges{
              do{

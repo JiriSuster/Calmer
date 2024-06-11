@@ -1,48 +1,58 @@
+//
+//  NoteComponentContentViewf.swift
+//  Calmer
+//
+//  Created by Jiří Daniel Šuster on 06.06.2024.
+//
+
 import SwiftUI
 
 struct NoteComponentContentView: View {
-    let name: String
-    let description: String
-    let date: String
-    let emoji: String
+    @StateObject var noteViewModel: NoteViewModel
+    @Binding var note: Note
     @State private var isShowingPopup = false
     
+    @State private var editedName: String = ""
+    @State private var editedDescription: String = ""
+    
     var truncatedName: String {
-        if name.count > 20 {
-            return String(name.prefix(20)) + "..."
+        if note.name?.count ?? 0 > 20 {
+            return String(note.name?.prefix(20) ?? "") + "..."
         } else {
-            return name
+            return note.name ?? ""
         }
     }
     
     var truncatedDescription: String {
-        if description.count > 50 {
-            return String(description.prefix(50)) + "..."
+        if note.text?.count ?? 0 > 50 {
+            return String(note.text?.prefix(50) ?? "") + "..."
         } else {
-            return description
+            return note.text ?? ""
         }
     }
     
     var body: some View {
         GroupBox {
             HStack {
-                Text(emoji)
+                Text(note.mood ?? "😐")
                     .font(.system(size: 55))
                 VStack(alignment: .leading) {
                     HStack {
                         Text(truncatedName).font(.system(size: 16))
                         Spacer()
-                        Text(date).foregroundColor(.gray)
+                        Text(formattedDate(note.date)).foregroundColor(.gray)
                     }
                     Text(truncatedDescription).foregroundColor(.gray)
                         .font(.system(size: 14))
                 }
             }
             .onTapGesture {
+                editedName = note.name ?? ""
+                editedDescription = note.text ?? ""
                 isShowingPopup = true
             }
             .sheet(isPresented: $isShowingPopup, content: {
-                PopupContentView(name: name, description: description)
+                PopupContentView(note: $note, editedName: $editedName, editedDescription: $editedDescription, noteViewModel: noteViewModel, isShowingPopup: $isShowingPopup)
             })
         }
         .background(Color.white)
@@ -50,19 +60,49 @@ struct NoteComponentContentView: View {
         .shadow(color: StyleConfig.shadowColor, radius: StyleConfig.shadowRadius)
         .padding(.horizontal,16)
     }
-}
-
-struct PopupContentView: View {
-    let name: String
-    let description: String
     
-    var body: some View {
-        VStack {
-            Text(name)
-            Spacer().frame(height: 20)
-            Text(description)
-        }
-        .background(Color.white)
+    private func formattedDate(_ date: Date?) -> String {
+        guard let date = date else { return "" }
+        let formatter = DateFormatter()
+        formatter.dateStyle = .medium
+        return formatter.string(from: date)
     }
 }
 
+struct PopupContentView: View {
+    @Binding var note: Note
+    @Binding var editedName: String
+    @Binding var editedDescription: String
+    @StateObject var noteViewModel: NoteViewModel
+    @Binding var isShowingPopup: Bool
+    
+    var body: some View {
+        NavigationView {
+            VStack {
+                TextField("Name", text: $editedName)
+                    .textFieldStyle(RoundedBorderTextFieldStyle())
+                    .padding()
+                Spacer().frame(height: 20)
+                TextEditor(text: $editedDescription)
+                    .border(Color.gray, width: 1)
+                    .padding()
+                Spacer()
+            }
+            .navigationBarItems(
+                leading: Button("Cancel") {
+                    isShowingPopup = false
+                },
+                trailing: Button("Save") {
+                    note.name = editedName
+                    note.text = editedDescription
+                    note.date = Date()
+                    noteViewModel.editNote(note: note)
+                    isShowingPopup = false
+                }
+            )
+            .navigationBarTitle("Edit Note", displayMode: .inline)
+        }
+        .background(Color.white)
+        .padding()
+    }
+}
