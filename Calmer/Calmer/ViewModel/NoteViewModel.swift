@@ -56,6 +56,11 @@
          }
      }
      
+     func getLastMood() -> String{
+         let notes = fetchNotes()
+         return notes.first?.mood ?? ""
+     }
+     
      func save(){
          if moc.hasChanges{
              do{

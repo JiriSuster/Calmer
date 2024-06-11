@@ -44,6 +44,7 @@ struct MainPageContentView: View {
         }.onAppear{
             moodData = mainPageViewModel.getMoodData()
             monthResults = mainPageViewModel.getMonthlyMoodData()
+            selectedEmoji = noteViewModel.getLastMood() 
         }
     }
 }

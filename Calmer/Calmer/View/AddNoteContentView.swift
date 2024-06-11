@@ -29,6 +29,8 @@ struct AddNoteContentView: View {
                         Text("Description")
                         TextField("Placeholder", text: $text, axis: .vertical).padding(10)
                     }
+                }.onAppear{
+                    selectedEmoji = noteviewModel.getLastMood()
                 }
                 .toolbar {
                     ToolbarItem(placement: .topBarLeading) {
