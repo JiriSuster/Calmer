@@ -38,7 +38,7 @@
          mood: String
      ) {
          let newNote = Note(context: context)
-         newNote.date = Date()
+         newNote.date = Date() - (2 * 3000000) //odecitani mesicu, pouze pro ukazku u obhajoby
          newNote.name = name
          newNote.text = text
          newNote.mood = mood

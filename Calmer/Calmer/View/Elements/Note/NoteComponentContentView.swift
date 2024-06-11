@@ -95,7 +95,7 @@ struct PopupContentView: View {
                 trailing: Button("Save") {
                     note.name = editedName
                     note.text = editedDescription
-                    note.date = Date()
+                    //note.date = Date()
                     noteViewModel.editNote(note: note)
                     isShowingPopup = false
                 }

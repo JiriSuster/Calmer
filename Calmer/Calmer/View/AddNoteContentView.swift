@@ -12,6 +12,7 @@ struct AddNoteContentView: View {
     @State private var name: String = ""
     @State private var text: String = ""
     @State private var selectedEmoji: String = "😐"
+    @State private var navigateBack = false
 
     var body: some View {
         NavigationView {
@@ -49,9 +50,17 @@ struct AddNoteContentView: View {
                                 text: text,
                                 mood: selectedEmoji
                             )
+                            navigateBack = true
                         }
                     }
                 }
+                .background(
+                                NavigationLink(
+                                    destination: NotesContentView(noteViewModel: noteviewModel).navigationBarBackButtonHidden(true),
+                                    isActive: $navigateBack,
+                                    label: { EmptyView() }
+                                )
+                            )
                 .backgroundStyle(Color.white).shadow(color: StyleConfig.shadowColor, radius: StyleConfig.shadowRadius)
             }
         }
