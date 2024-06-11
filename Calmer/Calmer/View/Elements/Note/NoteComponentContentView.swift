@@ -5,7 +5,7 @@ struct NoteComponentContentView: View {
     let description: String
     let date: String
     let emoji: String
-    @State private var isShowingPopup = false // Add state to control popup
+    @State private var isShowingPopup = false
     
     var truncatedName: String {
         if name.count > 20 {
@@ -42,12 +42,13 @@ struct NoteComponentContentView: View {
                 isShowingPopup = true
             }
             .sheet(isPresented: $isShowingPopup, content: {
-                PopupContentView(name: name,description: description)
+                PopupContentView(name: name, description: description)
             })
         }
-        .padding(.horizontal, 20)
         .background(Color.white)
-        .shadow(color: StyleConfig.shadowColor, radius: StyleConfig.shadowRadius)//TODO: premistit tento shadow
+        .cornerRadius(10)
+        .shadow(color: StyleConfig.shadowColor, radius: StyleConfig.shadowRadius)
+        .padding(.horizontal,16)
     }
 }
 
@@ -60,7 +61,6 @@ struct PopupContentView: View {
             Text(name)
             Spacer().frame(height: 20)
             Text(description)
-
         }
         .background(Color.white)
     }
