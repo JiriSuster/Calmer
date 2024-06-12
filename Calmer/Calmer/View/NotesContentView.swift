@@ -37,6 +37,8 @@ struct NotesContentView: View {
             }
         }.onAppear{
             notes = noteViewModel.fetchNotes()
+            print("Notes refreshed, last mood:")
+            print(notes.first?.mood)
         }
     }
 
