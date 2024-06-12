@@ -9,16 +9,15 @@ import SwiftUI
 import CoreData
 
 struct NotesContentView: View {
-    @StateObject var noteViewModel: NoteViewModel
-    @State var notes: [Note] = []
+    @ObservedObject var noteViewModel: NoteViewModel
     
     var body: some View {
         NavigationView {
             List {
-                ForEach($notes, id: \.self) { $note in
+                ForEach(noteViewModel.notes, id: \.self) { note in
                     NoteComponentContentView(
                         noteViewModel: noteViewModel,
-                        note: $note
+                        note: .constant(note)
                     ).listRowSeparator(.hidden)
                 }
             }
@@ -35,10 +34,9 @@ struct NotesContentView: View {
                     }
                 }
             }
-        }.onAppear{
-            notes = noteViewModel.fetchNotes()
-            print("Notes refreshed, last mood:")
-            print(notes.first?.mood)
+        }
+        .onAppear {
+            noteViewModel.fetchNotes()
         }
     }
 
@@ -49,4 +47,3 @@ struct NotesContentView: View {
         return formatter.string(from: date)
     }
 }
-

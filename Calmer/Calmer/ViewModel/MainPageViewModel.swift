@@ -19,22 +19,25 @@ class MainPageViewModel: ObservableObject {
     
     func getMoodData() -> [Mood] {
         var moodData: [Mood] = []
-        let notes = noteViewModel.fetchNotes()
+        let notes = noteViewModel.notes
         var moodCounts: [String: Int] = ["🤢":0,"😢":0,"😐":0,"😊":0,"🥰":0]
+        
         for note in notes {
-            let mood = note.mood
-            moodCounts[mood ?? "", default: 0] += 1
+            let mood = note.mood ?? ""
+            moodCounts[mood, default: 0] += 1
         }
         print(moodCounts)
+        
         moodData = moodCounts.map { Mood(moodType: $0.key, count: $0.value) }
         moodData = moodData.sorted { $0.moodType < $1.moodType }
         moodData.swapAt(0,3)
         moodData.swapAt(1, 2) //swaping to match emojis
+        
         return moodData
     }
     
     func getMonthlyMoodData() -> [MonthResult] {
-        let notes = noteViewModel.fetchNotes()
+        let notes = noteViewModel.notes
         
         let currentYear = Calendar.current.component(.year, from: Date())
         let dateFormatter = DateFormatter()
@@ -43,7 +46,7 @@ class MainPageViewModel: ObservableObject {
         var monthlyMoodCounts: [String: [String: Int]] = [:]
         
         for month in monthOrder {
-            monthlyMoodCounts[month] = ["": 0]
+            monthlyMoodCounts[month] = [:]
         }
         
         let notesForCurrentYear = notes.filter { note in
@@ -67,11 +70,9 @@ class MainPageViewModel: ObservableObject {
                 monthResults.append(MonthResult(month: month, value: maxMoodCount, color: color))
             }
         }
+        
         return monthResults
     }
-
-
-
     
     func getColor(for mood: String) -> Color {
         switch mood {
@@ -91,6 +92,6 @@ class MainPageViewModel: ObservableObject {
     }
     
     func addEmptyNote(emoji: String) {
-        noteViewModel.saveNote(name: "Set name", text: "Set description", mood: emoji)
+        noteViewModel.saveNote(name: nil, text: nil, mood: emoji)
     }
 }

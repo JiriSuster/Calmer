@@ -9,87 +9,85 @@
  import SwiftUI
  import CoreData
 
- class NoteViewModel: ObservableObject {
-     private var moc: NSManagedObjectContext
-     
-     init(moc: NSManagedObjectContext) {
-         self.moc = moc
-     }
-
-     
-     func fetchNotes() -> [Note]{
-         let request = NSFetchRequest<Note>(entityName: "Note")
-         var notes: [Note] = []
-         
-         do{
-             notes = try moc.fetch(request)
-         }catch{
-             print("Some error occured while fetching")
-         }
-         return notes.reversed()
-         
-     }
-     
-     
-     func saveNote(
-         name: String,
-         text: String,
-         mood: String
-     ) {
-         let isLastNoteFromToday = Calendar.current.isDateInToday(getLastDate())
-         print("is last note from today?")
-         print(isLastNoteFromToday)
-         if(!isLastNoteFromToday){
-             let newNote = Note(context: moc)
-             newNote.date = Date() - (0 * 3000000) //odecitani mesicu, pouze pro ukazku u obhajoby
-             newNote.name = name
-             newNote.text = text
-             newNote.mood = mood
-             newNote.id = UUID()
-         }
-         else{
-             let notes = fetchNotes()
-             let lastNote = notes.first
-             lastNote?.name = name
-             lastNote?.text = text
-             lastNote?.mood = mood
-         }
-         save()
-     }
-     
-     func getLastMood() -> String{
-         let notes = fetchNotes()
-         return notes.first?.mood ?? ""
-     }
-     
-     func editLastMood(mood: String){ //funguje
-             let notes = fetchNotes()
-             notes.first?.mood = mood
-             save()
-         }
-         
-     func getLastDate() -> Date{
-             let notes = fetchNotes()
-             return notes.first?.date ?? Date() - 10000000000
-         }
-         
-     func editLastNote(name: String, description: String){
-             let notes = fetchNotes()
-             notes.first?.name = name
-             notes.first?.text = description
-             save()
-         }
-     
-     
-     
-     func save(){
-         if moc.hasChanges{
-             do{
-                 try moc.save()
-             } catch {
-                 print("Cannot save MOC: \(error.localizedDescription)")
-             }
-         }
-     }
-     
- }
+class NoteViewModel: ObservableObject {
+    private var moc: NSManagedObjectContext
+    @Published var notes: [Note] = []
+    
+    init(moc: NSManagedObjectContext) {
+        self.moc = moc
+        fetchNotes()
+    }
+    
+    func fetchNotes() {
+        let request = NSFetchRequest<Note>(entityName: "Note")
+        do {
+            notes = try moc.fetch(request).reversed()
+        } catch {
+            print("Some error occurred while fetching")
+        }
+    }
+    
+    func saveNote(
+        name: String?,
+        text: String?,
+        mood: String
+    ) {
+        let isLastNoteFromToday = Calendar.current.isDateInToday(getLastDate())
+        if(name == nil && text == nil && isLastNoteFromToday){
+            editLastMood(mood: mood)
+        }
+        else{
+            if(!isLastNoteFromToday){
+                let newNote = Note(context: moc)
+                newNote.date = Date()
+                newNote.name = name ?? "Set name"
+                newNote.text = text ?? "Set description"
+                newNote.mood = mood
+                newNote.id = UUID()
+            } else {
+                if let lastNote = notes.first {
+                    lastNote.name = name
+                    lastNote.text = text
+                    lastNote.mood = mood
+                }
+            }
+        }
+        save()
+        fetchNotes()
+    }
+    
+    func getLastMood() -> String {
+        return notes.first?.mood ?? ""
+    }
+    
+    func editLastMood(mood: String) {
+        if let lastNote = notes.first {
+            lastNote.mood = mood
+            save()
+            fetchNotes()
+        }
+    }
+    
+    func getLastDate() -> Date {
+        return notes.first?.date ?? Date().addingTimeInterval(-10000000000)
+    }
+    
+    func editLastNote(name: String, description: String) {
+        if let lastNote = notes.first {
+            lastNote.name = name
+            lastNote.text = description
+            save()
+            fetchNotes()
+        }
+    }
+    
+    func save() {
+        if moc.hasChanges {
+            do {
+                try moc.save()
+            } catch {
+                print("Cannot save MOC: \(error.localizedDescription)")
+            }
+        }
+    }
+}
