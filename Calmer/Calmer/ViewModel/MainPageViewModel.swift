@@ -91,6 +91,6 @@ class MainPageViewModel: ObservableObject {
     }
     
     func addEmptyNote(emoji: String) {
-        noteViewModel.saveNote(context: moc, name: "Set name", text: "Set description", mood: emoji)
+        noteViewModel.saveNote(name: "Set name", text: "Set description", mood: emoji)
     }
 }

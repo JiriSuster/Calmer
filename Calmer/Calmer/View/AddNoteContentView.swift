@@ -7,7 +7,6 @@
 import SwiftUI
 
 struct AddNoteContentView: View {
-    @Environment(\.managedObjectContext) private var viewContext
     @StateObject var noteviewModel : NoteViewModel
     @State private var name: String = ""
     @State private var text: String = ""
@@ -47,7 +46,6 @@ struct AddNoteContentView: View {
                     ToolbarItem(placement: .navigationBarTrailing) {
                         Button("Save") {
                             noteviewModel.saveNote(
-                                context: viewContext,
                                 name: name,
                                 text: text,
                                 mood: selectedEmoji

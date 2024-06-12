@@ -32,28 +32,17 @@
      
      
      func saveNote(
-         context: NSManagedObjectContext,
          name: String,
          text: String,
          mood: String
      ) {
-         let newNote = Note(context: context)
+         let newNote = Note(context: moc)
          newNote.date = Date() - (2 * 3000000) //odecitani mesicu, pouze pro ukazku u obhajoby
          newNote.name = name
          newNote.text = text
          newNote.mood = mood
          newNote.id = UUID()
          save()
-     }
-     
-     func editNote(note: Note){
-         if let context = note.managedObjectContext {
-             do {
-                 try context.save()
-             } catch {
-                 print("Error saving context: \(error.localizedDescription)")
-             }
-         }
      }
      
      func getLastMood() -> String{
