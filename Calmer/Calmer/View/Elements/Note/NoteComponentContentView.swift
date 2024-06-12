@@ -57,7 +57,7 @@ struct NoteComponentContentView: View {
         }
         .background(Color.white)
         .cornerRadius(10)
-        .shadow(color: StyleConfig.shadowColor, radius: StyleConfig.shadowRadius)
+        .shadow(color: Config.shadowColor, radius: Config.shadowRadius)
         .padding(.horizontal,16)
     }
     

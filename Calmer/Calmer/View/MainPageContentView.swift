@@ -19,7 +19,7 @@ struct MainPageContentView: View {
     var body: some View {
         NavigationView {
             ZStack {
-                StyleConfig.backgroundColor
+                Config.backgroundColor
                     .edgesIgnoringSafeArea(.all)
                 VStack(spacing: 8){
                     ChartElementContentView(monthResults: monthResults)
@@ -35,7 +35,7 @@ struct MainPageContentView: View {
                             .padding()
                             .frame(maxWidth: .infinity)
                     }
-                    .background(StyleConfig.buttonColor)
+                    .background(Config.buttonColor)
                     .cornerRadius(25)
                     .padding(.horizontal)
                 }

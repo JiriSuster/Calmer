@@ -65,6 +65,6 @@ struct LargeSoundElementContentView: View {
             .cornerRadius(15)
             .padding(.horizontal,6)
             .frame(width: 180, height: 200)
-        }.backgroundStyle(Color.white).shadow(color: StyleConfig.shadowColor, radius: StyleConfig.shadowRadius)
+        }.backgroundStyle(Color.white).shadow(color: Config.shadowColor, radius: Config.shadowRadius)
     }
 }

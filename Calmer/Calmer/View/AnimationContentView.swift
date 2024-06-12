@@ -54,7 +54,7 @@ struct AnimationContentView: View {
                     Text(self.isAnimation ? "Stop" : "Start")
                         .padding(.horizontal, 40)
                         .padding(.vertical, 15)
-                        .background(StyleConfig.buttonColor)
+                        .background(Config.buttonColor)
                         .foregroundStyle(.white)
                         .fontWeight(.bold)
                         .clipShape(Capsule())

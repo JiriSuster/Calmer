@@ -32,28 +32,42 @@ class NoteViewModel: ObservableObject {
         text: String?,
         mood: String
     ) {
-        let isLastNoteFromToday = Calendar.current.isDateInToday(getLastDate())
-        if(name == nil && text == nil && isLastNoteFromToday){
-            editLastMood(mood: mood)
-        }
-        else{
-            if(!isLastNoteFromToday){
-                let newNote = Note(context: moc)
-                newNote.date = Date()
-                newNote.name = name ?? "Set name"
-                newNote.text = text ?? "Set description"
-                newNote.mood = mood
-                newNote.id = UUID()
-            } else {
-                if let lastNote = notes.first {
-                    lastNote.name = name
-                    lastNote.text = text
-                    lastNote.mood = mood
+        if(!Config.obhajoba){
+            let isLastNoteFromToday = Calendar.current.isDateInToday(getLastDate())
+            if(name == nil && text == nil && isLastNoteFromToday){
+                editLastMood(mood: mood)
+            }
+            else{
+                if(!isLastNoteFromToday){
+                    let newNote = Note(context: moc)
+                    newNote.date = Date()
+                    newNote.name = name ?? "Set name"
+                    newNote.text = text ?? "Set description"
+                    newNote.mood = mood
+                    newNote.id = UUID()
+                } else {
+                    if let lastNote = notes.first {
+                        lastNote.name = name
+                        lastNote.text = text
+                        lastNote.mood = mood
+                    }
                 }
             }
+            save()
+            fetchNotes()
         }
-        save()
-        fetchNotes()
+        else{
+
+                    let newNote = Note(context: moc)
+                    newNote.date = Config.fakeDate
+                    newNote.name = name ?? "Set name"
+                    newNote.text = text ?? "Set description"
+                    newNote.mood = mood
+                    newNote.id = UUID()
+            
+            save()
+            fetchNotes()
+        }
     }
     
     func getLastMood() -> String {

@@ -60,7 +60,7 @@ struct SoundElementContentView: View {
             .onTapGesture {
                 isViewPresented.toggle()
             }.padding(.horizontal,6).padding(.vertical,3)
-        }.shadow(color: StyleConfig.shadowColor, radius: StyleConfig.shadowRadius)
+        }.shadow(color: Config.shadowColor, radius: Config.shadowRadius)
 
         
     }

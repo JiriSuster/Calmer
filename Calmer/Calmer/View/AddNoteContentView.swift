@@ -16,7 +16,7 @@ struct AddNoteContentView: View {
     var body: some View {
         NavigationView {
             ZStack {
-                StyleConfig.backgroundColor
+                Config.backgroundColor
                     .edgesIgnoringSafeArea(.all)
                 VStack {
                     HStack {
@@ -61,7 +61,7 @@ struct AddNoteContentView: View {
                                     label: { EmptyView() }
                                 )
                             )
-                .backgroundStyle(Color.white).shadow(color: StyleConfig.shadowColor, radius: StyleConfig.shadowRadius)
+                .backgroundStyle(Color.white).shadow(color: Config.shadowColor, radius: Config.shadowRadius)
             }
         }
     }

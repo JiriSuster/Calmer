@@ -26,7 +26,7 @@ struct SelectMoodComponentContentView: View {
                     }
                 }
             }
-        }.backgroundStyle(Color.white).shadow(color: StyleConfig.shadowColor, radius: StyleConfig.shadowRadius)
+        }.backgroundStyle(Color.white).shadow(color: Config.shadowColor, radius: Config.shadowRadius)
     }
 }
 

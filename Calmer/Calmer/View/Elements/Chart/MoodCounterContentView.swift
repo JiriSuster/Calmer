@@ -49,7 +49,7 @@ struct MoodCounterContentView: View {
         }
         .padding(.horizontal, 16)
         .backgroundStyle(Color.white)
-        .shadow(color: StyleConfig.shadowColor, radius: StyleConfig.shadowRadius)
+        .shadow(color: Config.shadowColor, radius: Config.shadowRadius)
     }
 }
 
