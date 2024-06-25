@@ -13,7 +13,7 @@ struct SelectMoodComponentContentView: View {
     var body: some View {
         GroupBox {
             VStack(alignment: .leading) {
-                Text("Select your today's mood")
+                Text("Select your mood")
                 HStack {
                     ForEach(["🤢", "😢", "😐", "😊", "🥰"], id: \.self) { emoji in
                         Button(action: {

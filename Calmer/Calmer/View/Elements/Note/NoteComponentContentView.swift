@@ -13,6 +13,7 @@ struct NoteComponentContentView: View {
     @State private var isShowingPopup = false
     
     @State private var editedName: String = ""
+    @State private var editedMood: String = ""
     @State private var editedDescription: String = ""
     
     var truncatedName: String {
@@ -49,10 +50,11 @@ struct NoteComponentContentView: View {
             .onTapGesture {
                 editedName = note.name ?? ""
                 editedDescription = note.text ?? ""
+                editedMood = note.mood ?? "😐"
                 isShowingPopup = true
             }
             .sheet(isPresented: $isShowingPopup, content: {
-                PopupContentView(note: $note, editedName: $editedName, editedDescription: $editedDescription, noteViewModel: noteViewModel, isShowingPopup: $isShowingPopup)
+                PopupContentView(note: $note, editedName: $editedName,editedMood: $editedMood, editedDescription: $editedDescription, noteViewModel: noteViewModel, isShowingPopup: $isShowingPopup)
             })
         }
         .background(Color.white)
@@ -70,24 +72,34 @@ struct NoteComponentContentView: View {
 }
 
 struct PopupContentView: View {
+    @State var selectedEmoji = "😐"
     @Binding var note: Note
     @Binding var editedName: String
+    @Binding var editedMood: String
     @Binding var editedDescription: String
     @StateObject var noteViewModel: NoteViewModel
     @Binding var isShowingPopup: Bool
     
     var body: some View {
         NavigationView {
-            VStack {
-                TextField("Name", text: $editedName)
-                    .textFieldStyle(RoundedBorderTextFieldStyle())
-                    .padding()
-                Spacer().frame(height: 20)
-                TextEditor(text: $editedDescription)
-                    .border(Color.gray, width: 1)
-                    .padding()
+            VStack(alignment: .leading, spacing: 8) {
+                Divider()
+                HStack {
+                    Text("Name")
+                    Spacer().frame(width: 16)
+                    TextField("Value", text: $editedName)
+                }.padding(.horizontal, 16)
+                Divider()
+                SelectMoodComponentContentView(selectedEmoji: $selectedEmoji)
+                Divider()
+                VStack(alignment: .leading) {
+                    Text("Description")
+                    TextField("Value", text: $editedDescription, axis: .vertical)
+                }.padding(.horizontal, 16)
+                
                 Spacer()
             }
+            .padding(16)
             .navigationBarItems(
                 leading: Button("Cancel") {
                     isShowingPopup = false
@@ -95,14 +107,16 @@ struct PopupContentView: View {
                 trailing: Button("Save") {
                     note.name = editedName
                     note.text = editedDescription
-                    //note.date = Date()
+                    note.mood = editedMood
                     noteViewModel.save()
                     isShowingPopup = false
                 }
             )
             .navigationBarTitle("Edit Note", displayMode: .inline)
+            .onAppear{
+                selectedEmoji = note.mood ?? "😐"
+            }
         }
-        .background(Color.white)
-        .padding()
+        .backgroundStyle(Color.white).shadow(color: Config.shadowColor, radius: Config.shadowRadius)
     }
 }
