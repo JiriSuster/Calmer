@@ -12,11 +12,12 @@ struct CalmerApp: App {
     @StateObject private var dataController = CoreDataController()
     
     var body: some Scene {
+        let noteViewModel = NoteViewModel(moc: dataController.container.viewContext)
         WindowGroup {
             TabsController(
                 soundViewModel: SoundViewModel(moc: dataController.container.viewContext),
-                noteViewModel: NoteViewModel(moc: dataController.container.viewContext),
-                mainPageViewModel: MainPageViewModel(moc: dataController.container.viewContext,noteViewModel: .init(moc: dataController.container.viewContext))
+                noteViewModel: noteViewModel,
+                mainPageViewModel: MainPageViewModel(moc: dataController.container.viewContext,noteViewModel: noteViewModel)
             ).environment(\.managedObjectContext, dataController.container.viewContext)
         }
     }

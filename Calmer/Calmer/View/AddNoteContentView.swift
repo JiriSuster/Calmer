@@ -7,7 +7,7 @@
 import SwiftUI
 
 struct AddNoteContentView: View {
-    @StateObject var noteviewModel : NoteViewModel
+    @StateObject var noteviewModel: NoteViewModel
     @State private var name: String = ""
     @State private var text: String = ""
     @State private var selectedEmoji: String = "😐"
@@ -19,16 +19,22 @@ struct AddNoteContentView: View {
                 Config.backgroundColor
                     .edgesIgnoringSafeArea(.all)
                 VStack {
+                    Divider()
                     HStack {
                         Text("Name")
+                        Spacer().frame(width: 16)
                         TextField("Value", text: $name)
-                    }
+                    }.padding(.horizontal, 16)
+                    Divider()
                     SelectMoodComponentContentView(selectedEmoji: $selectedEmoji)
-                    HStack {
+                    Divider()
+                    VStack(alignment: .leading) {
                         Text("Description")
-                        TextField("Placeholder", text: $text, axis: .vertical).padding(10)
-                    }
-                }.onAppear{
+                        TextField("Value", text: $text, axis: .vertical)
+                    }.padding(.horizontal, 16)
+                }
+                .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .top)
+                .onAppear {
                     selectedEmoji = noteviewModel.getLastMood()
                 }
                 .toolbar {
@@ -46,8 +52,8 @@ struct AddNoteContentView: View {
                     ToolbarItem(placement: .navigationBarTrailing) {
                         Button("Save") {
                             noteviewModel.saveNote(
-                                name: name,
-                                text: text,
+                                name: name.isEmpty ? nil : name,
+                                text: text.isEmpty ? nil : text,
                                 mood: selectedEmoji
                             )
                             navigateBack = true
@@ -55,13 +61,14 @@ struct AddNoteContentView: View {
                     }
                 }
                 .background(
-                                NavigationLink(
-                                    destination: NotesContentView(noteViewModel: noteviewModel).navigationBarBackButtonHidden(true),
-                                    isActive: $navigateBack,
-                                    label: { EmptyView() }
-                                )
-                            )
+                    NavigationLink(
+                        destination: NotesContentView(noteViewModel: noteviewModel).navigationBarBackButtonHidden(true),
+                        isActive: $navigateBack,
+                        label: { EmptyView() }
+                    )
+                )
                 .backgroundStyle(Color.white).shadow(color: Config.shadowColor, radius: Config.shadowRadius)
+                .navigationBarTitleDisplayMode(.inline)
             }
         }
     }

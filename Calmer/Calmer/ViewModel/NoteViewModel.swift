@@ -71,7 +71,9 @@ class NoteViewModel: ObservableObject {
     }
     
     func getLastMood() -> String {
-        return notes.first?.mood ?? ""
+        let lastMood = notes.first?.mood ?? "😐"
+        print("last mood: " + lastMood)
+        return lastMood
     }
     
     func editLastMood(mood: String) {

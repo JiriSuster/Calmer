@@ -19,15 +19,15 @@ struct TabsController: View {
     
     var body: some View {
         TabView(selection: $selection) {
-            MusicContentView(soundViewModel: .init(moc: moc))
+            MusicContentView(soundViewModel: soundViewModel)
                 .tabItem {
                     Label("Music", systemImage: "music.note")
                 }.tag(1)
-            NotesContentView(noteViewModel: .init(moc: moc))
+            NotesContentView(noteViewModel: noteViewModel)
                 .tabItem {
                     Label("Notes", systemImage: "note")
                 }.tag(2)
-            MainPageContentView(mainPageViewModel: .init(moc: moc,noteViewModel: noteViewModel), noteViewModel: .init(moc: moc))
+            MainPageContentView(mainPageViewModel: mainPageViewModel, noteViewModel: noteViewModel)
                 .tabItem {
                     Label("Home", systemImage: "house")
                 }.tag(3)
