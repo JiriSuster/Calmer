@@ -107,7 +107,7 @@ struct PopupContentView: View {
                 trailing: Button("Save") {
                     note.name = editedName
                     note.text = editedDescription
-                    note.mood = editedMood
+                    note.mood = selectedEmoji
                     noteViewModel.save()
                     isShowingPopup = false
                 }
