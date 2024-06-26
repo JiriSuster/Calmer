@@ -34,9 +34,12 @@ struct ChartElementContentView: View {
                     .font(.body)
 
                 Chart {
-                    RuleMark(y: .value("Average", averageValue))
-                        .lineStyle(StrokeStyle(lineWidth: 2))
-                        .foregroundStyle(Color.red)
+                    if (averageValue != 0){
+                        RuleMark(y: .value("Average", averageValue))
+                            .lineStyle(StrokeStyle(lineWidth: 2))
+                            .foregroundStyle(Color.red)
+                    }
+                    
 
                     ForEach(monthResults) { result in
                         BarMark(
