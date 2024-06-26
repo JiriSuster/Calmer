@@ -60,7 +60,6 @@ struct LargeSoundElementContentView: View {
             }.onTapGesture {
                 isViewPresented.toggle()
             }
-            .padding(.vertical,3)
             .background(Color.white)
             .cornerRadius(15)
             .padding(.horizontal,6)
