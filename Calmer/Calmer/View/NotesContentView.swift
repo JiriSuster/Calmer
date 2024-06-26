@@ -30,7 +30,7 @@ struct NotesContentView: View {
                         AddNoteContentView(noteviewModel: noteViewModel)
                             .navigationBarBackButtonHidden(true)
                     } label: {
-                        Text("Add Note")
+                        Text(noteViewModel.isLastNoteFromToday() ? "Edit Note" : "Add Note")
                     }
                 }
             }

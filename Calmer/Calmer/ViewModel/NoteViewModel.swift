@@ -33,12 +33,11 @@ class NoteViewModel: ObservableObject {
         mood: String
     ) {
         if(!Config.obhajoba){
-            let isLastNoteFromToday = Calendar.current.isDateInToday(getLastDate())
-            if(name == nil && text == nil && isLastNoteFromToday){
+            if(name == nil && text == nil && isLastNoteFromToday()){
                 editLastMood(mood: mood)
             }
             else{
-                if(!isLastNoteFromToday){
+                if(!isLastNoteFromToday()){
                     let newNote = Note(context: moc)
                     newNote.date = Date()
                     newNote.name = name ?? "Set name"
@@ -105,5 +104,9 @@ class NoteViewModel: ObservableObject {
                 print("Cannot save MOC: \(error.localizedDescription)")
             }
         }
+    }
+    
+    func isLastNoteFromToday() -> Bool {
+        return Calendar.current.isDateInToday(getLastDate())
     }
 }
