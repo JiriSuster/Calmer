@@ -42,7 +42,7 @@ struct MoodCounterContentView: View {
                     .chartYAxis(.hidden)
                     .chartLegend(.hidden)
                 } else {
-                    Text("Add your first mood 😊")
+                    Text("Add your first mood").foregroundColor(.gray).padding(.vertical,40)
                         .frame(maxWidth: .infinity, alignment: .center)
                 }
             }
