@@ -1,7 +1,7 @@
 
 # Calmer
 
-Final project for course *Application Development for iOS 1*, taught at [PEF MENDELU], (https://pef.mendelu.cz/), graded 40/40 points
+Final project for course *Application Development for iOS 1*, taught at [PEF MENDELU](https://pef.mendelu.cz/), graded 40/40 points
 
 ## Description
 
